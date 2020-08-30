@@ -3,6 +3,6 @@
 // Removendo da Primeira Posicao:
 // Usando o metodo .SHIFT:
 
-numbers.shift();
+// numbers.shift();
 
 // O metodo SHIFT faz com que o array emule uma FILA.
