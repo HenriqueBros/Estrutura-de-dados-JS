@@ -92,5 +92,3 @@ numbersCopy.fill(1, 3, 5);
 // É otimo para criar um vetor e inicar seus valores,
 // Nesse exemplo um array de tamanho 6 e todos valores 1:
 let ones = Array(6).fill(1);
-
-// Usando o metodo COPYWUTHIN:
