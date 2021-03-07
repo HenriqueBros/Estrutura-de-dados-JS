@@ -50,7 +50,32 @@ class Set {
             }
         });
         return intersectionSet;
-    }
+     }
+
+     difference(otherSet) {
+         const differenceSet = new Set();
+         this.values().forEach(value => {
+             if(!otherSet.has(value)) {
+                 differenceSet.add(value);
+             }
+         });
+         return differenceSet;
+     }
+
+     isSubsetOf(otherSet) {
+         if(this.size > otherSet.size) {
+             return false;
+         }
+         let isSubset = true;
+         this.values().every(value => {
+             if(!otherSet.has(value)) {
+                 isSubset = false;
+                 return false;
+             }
+             return true;
+         })
+         return isSubset;
+     }
 
     constructor() {
         this.items = {};
@@ -100,7 +125,7 @@ console.log(unionAB.values());
 //-------------------------------------------------
 
 //Teste Intersecção de Conjuntos
-
+/*
 const setA = new Set();
 setA.add(1);
 setA.add(2);
@@ -113,3 +138,50 @@ setB.add(4);
 
 const intersectionAB = setA.intersection(setB);
 console.log(intersectionAB.values());
+*/
+//-------------------------------------------------
+
+//Teste de Diferença de Conjuntos
+/*
+const setA = new Set();
+setA.add(1);
+setA.add(2);
+setA.add(3);
+
+const setB = new Set();
+setB.add(2);
+setB.add(3);
+setB.add(4);
+
+const differenceAB = setA.difference(setB);
+console.log(differenceAB.values());
+*/
+//-------------------------------------------------
+
+//Tesde de Subconjunto de Conjuntos
+/*
+const setA = new Set();
+setA.add(1);
+setA.add(2);
+
+const setB = new Set();
+setB.add(1);
+setB.add(2);
+setB.add(3);
+
+const setC =  new Set();
+setC.add(2);
+setC.add(3);
+setC.add(4);
+
+console.log(setA.isSubsetOf(setB));
+console.log(setA.isSubsetOf(setC));
+*/
+
+//Testar a classe Set
+const set = new Set();
+set.add(1);
+set.add(3);
+console.log(set.values());
+console.log(set.has(1));
+console.log(set.size);
