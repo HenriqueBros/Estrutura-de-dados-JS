@@ -2,10 +2,11 @@
   "name": "javascript-datastructures-algorithms",
   "version": "0.0.1",
   "description": "Learning JavaScript Data Structures and Algorithms",
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loiane/javascript-datastructures-algorithms.git"
-  },
+    "url": "git+https://github.com/loiane/javascript-datastructures-algorithms.git" 
+   },
   "keywords": [],
   "author": "Loiane Groner",
   "license": "MIT",
