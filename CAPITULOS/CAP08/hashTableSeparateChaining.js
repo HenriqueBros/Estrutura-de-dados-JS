@@ -1,5 +1,4 @@
 import { defaultToString } from "./util"
-
 class HashTableSepareteChaining {
     put(key, value) {
         if(key != null && valeu != null) {
