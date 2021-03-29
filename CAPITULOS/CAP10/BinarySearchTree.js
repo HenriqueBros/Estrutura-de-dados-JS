@@ -25,6 +25,75 @@ export default class BinarySearchTree {
             }
         }
     }
+    //Percurso em-ordem
+    inOrderTraverse(callback) {
+        this.inOrderTraverseNode(this.root, callback);
+    }
+
+    inOrderTraverseNode(node, callback) {
+        if(node != null) {
+            this.inOrderTraverseNode(node.left, callback);
+            callback(node, key);
+            this.inOrderTraverseNode(node.right, callback);
+        }
+    }
+
+    //Percurso pré-ordem
+    preOrderTraverse(callback) {
+        this.preOrderTraverseNode(this.root, callback);
+    }
+
+    preOrderTraverseNode(node, callback) {
+        if(node != null) {
+            callback(node, key);
+            this.preOrderTraverseNode(node.left, callback);
+            this.preOrderTraverseNode(node.right, callback);
+        }
+    }
+
+    //Percurso pós-ordem
+    postOrderTraverse(callback) {
+        this.postOrderTraverseNode(this.root, callback);
+    }
+
+    postOrderTraverseNode(node, callback) {
+        if( node != null) {
+            this.postOrderTraverseNode(node.left, callback);
+            this.postOrderTraverseNode(node.right, callback);
+            callback(node.key);
+        }
+    }
+
+    //Chave minima
+    min() {
+        return this.minNode(this.root);
+    }
+
+    minNode(node) {
+        let current = node;
+        while (current != null && current.left != null) {
+            current = current.left;
+        }
+        return current;
+    }
+
+    //Chave maxima
+    max() {
+        return this.maxNode(this.root);
+    }
+
+    maxNode(node) {
+        let current = node;
+        while (current != null && current.right != null) {
+            current = current.right;
+        }
+        return current;
+    }
+
+    //Pesquisa de valor especifico
+    search(key) {
+        
+    }
 
     constructor(compareFn = defaultCompare) {
         this.compareFn = compareFn;
@@ -48,3 +117,6 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 tree.insert(6);
+
+const printNode = (value) => console.log(value);
+tree.inOrderTraverseNode(printNode);
