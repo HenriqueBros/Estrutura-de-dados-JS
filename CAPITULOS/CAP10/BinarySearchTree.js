@@ -10,6 +10,7 @@ export default class BinarySearchTree {
         }
     }
 
+    //Insere um no
     insertNode(node, key) {
         if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
             if(node.left == null) {
@@ -25,6 +26,16 @@ export default class BinarySearchTree {
             }
         }
     }
+
+    //Remove um no
+    remove(key) {
+        this.root = this.removeNode(this.root, key);
+    }
+
+    removeNode(node, key) {
+        
+    }
+
     //Percurso em-ordem
     inOrderTraverse(callback) {
         this.inOrderTraverseNode(this.root, callback);
@@ -92,7 +103,20 @@ export default class BinarySearchTree {
 
     //Pesquisa de valor especifico
     search(key) {
-        
+        return this.searchNode(this.root, key);
+    }
+
+    searchNode(node, key) {
+        if(node == null) {
+            return false;
+        }
+        if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
+            return this.searchNode(node.left, key);
+        } else if(this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+            return this.searchNode(node.right, key);
+        } else {
+            return true;
+        }
     }
 
     constructor(compareFn = defaultCompare) {
@@ -120,3 +144,7 @@ tree.insert(6);
 
 const printNode = (value) => console.log(value);
 tree.inOrderTraverseNode(printNode);
+
+// Teste de pesquisa
+console.log(tree.search(1)) ? 'Key 1 found' : 'Key 1 not found';
+console.log(tree.search(8)) ? 'Key 8 found' : 'Key 8 not found';
