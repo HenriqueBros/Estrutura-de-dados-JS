@@ -33,7 +33,36 @@ export default class BinarySearchTree {
     }
 
     removeNode(node, key) {
-        
+        if(node == null) {
+            return null;
+        }
+        if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
+            node.left = this.removeNode(node.left, key);
+            return node;
+        } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+            node.right = this.removeNode(node.right, key);
+            return node;
+        } else {
+            //key é igual node.item
+            //Caso 01
+            if(node.left == null && node.right == null) {
+                node = null;
+                return node;
+            }
+            //Caso 02
+            if(node.left == null) {
+                node = node.right;
+                return node;
+            } else if(node.right == null) {
+                node = node.left;
+                return node;
+            }
+            //Caso 03
+            const aux = this.minNode(node.right);
+            node.key = aux.key;
+            node.right = this.removeNode(node.right, aux.key);
+            return node;
+        }
     }
 
     //Percurso em-ordem
