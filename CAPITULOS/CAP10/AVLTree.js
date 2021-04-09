@@ -1,5 +1,6 @@
 import { BinarySearchTree } from './BinarySearchTree';
 import { Compare } from './util';
+import { defaultCompare } from './util';
 
 class AVLTree extends BinarySearchTree {
     getNodeHeight(node) {
