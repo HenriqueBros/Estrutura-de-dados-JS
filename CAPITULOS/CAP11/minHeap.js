@@ -1,6 +1,6 @@
 //import { showHelpOnFail } from 'yargs';
 //import { defaultCompare }  from './util';
-import { defaultCompare } from '../../src/js/util';
+import { Compare, defaultCompare } from '../../src/js/util';
 export class minHeap {
     getLeftIndex(index) {
         return 2 * index + 1;
@@ -65,7 +65,22 @@ export class minHeap {
         return removedValue;
     }
 
-    
+    siftDown(index) {
+        let element = index;
+        const left = this.getLeftIndex(index);
+        const right = this.getRightIndex(index);
+        const size = this.size();
+        if (left < size && this.compareFn(this.heap[element], this.heap[left]) > Compare.BIGGER_THAN) {
+            element = left;
+        }
+        if(right < size && this.compareFn(this.heap[element], this.heap[right]) > Compare.BIGGER_THAN) {
+            element = right;
+        }
+        if (inde !== element) {
+            swap(this.heap, index, element);
+            this.siftDown(element);
+        }
+    }
 
     constructor (compareFn = defaultCompare) {
         this.compareFn = compareFn;
@@ -83,3 +98,9 @@ heap.insert(1);
 console.log('Heap size:', heap.size());
 console.log('Heap is empty:', heap.isEmpty());
 console.log('Heap min value:', heap.findMinimun());
+
+heap = new minHeap();
+for (let i = 1; i < 10; i++) {
+    heap.insert(i);
+}
+console.log('Extract minimum: ', heap.extract());
