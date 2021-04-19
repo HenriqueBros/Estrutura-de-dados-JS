@@ -1,6 +1,6 @@
 import  { Dictionary } from '../CAP08/dictionary';
 
-class Graph {
+export class Graph {
     addVertex(x) {
         if (!this.vertices.includes(v)) {
             this.vertices.push(v);
@@ -49,8 +49,8 @@ class Graph {
     }
 }
 
-const graph = new Graph();
-const myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+export const graph = new Graph();
+export const myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 for (let i = 0; i < myVertices.length; i++) {
     graph.addVertex(myVertices[i]);
 }
@@ -65,3 +65,19 @@ graph.addEdge('B', 'F');
 graph.addEdge('E', 'I');
 
 console.log(graph.toString());
+
+// Marcação de cores para percorrer o GRAFO
+export const Colors = {
+    WHITE: 0,
+    GREY: 1,
+    BLACK: 2
+};
+
+// Iniciaçização das cores do vertice com WHITE
+export const initializeColor = vertices => {
+    const color = [];
+    for (let i = 0; i < vertices.length; i++) {
+        color[vertices[i]] = Colors.WHITE;
+    }
+    return color;
+};
