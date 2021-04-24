@@ -27,3 +27,5 @@ function minCoinChange(coins, amount) {
 }
 
 console.log(minCoinChange([1, 5, 10, 25], 36));
+
+//89196
